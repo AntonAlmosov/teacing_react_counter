@@ -1,14 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import { Counter } from "./App";
+import * as serviceWorker from "./serviceWorker";
+
+const counters = [
+  {
+    buttonColor: "white",
+    onClick: (counter) => console.log("За Навального ", counter),
+  },
+  {
+    buttonColor: "blue",
+    onClick: (counter) => console.log("За Путина ", counter),
+  },
+  {
+    buttonColor: "red",
+    onClick: (counter) => console.log("За Собчак ", counter),
+  },
+];
+
+const names = ["Аня", "Катя", "Нина"];
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {counters.map((props, i) => (
+      <Counter {...props} key={i} />
+    ))}
+    {names.map((name, i) => {
+      return <div key={i}>{name}</div>;
+    })}
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
